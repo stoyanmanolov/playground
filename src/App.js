@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
+  const handleClick = () => {
+    const makeImagePromise = async () => {
+      const response = await fetch(
+        "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
+      );
+      return await response.blob();
+    };
+
+    navigator.clipboard
+      .write([new ClipboardItem({ "image/png": makeImagePromise() })])
+      .then(function () {
+        console.log("copied");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={handleClick}>Hey</button>
     </div>
   );
 }
