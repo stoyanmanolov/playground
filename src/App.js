@@ -70,19 +70,20 @@ function App() {
 
     if (fileUrl) {
       const mediaBase64 = await toBase64(fileUrl);
-      file = await getFileFromMedia({ fileUrl });
+      // file = await getFileFromMedia({ fileUrl });
       base64url = mediaBase64;
     } else {
-      file = await getFileFromBase64(base64);
-      base64url = base64;
+      // file = await getFileFromBase64(base64);
+      // base64url = base64;
     }
     console.log(file, base64url)
 
     if (
-      navigator.share &&
-      navigator.canShare({
-        files: [file],
-      })
+      // navigator.share &&
+      // navigator.canShare({
+      //   files: [file],
+      // })
+      false
     ) {
       navigator
         .share({
